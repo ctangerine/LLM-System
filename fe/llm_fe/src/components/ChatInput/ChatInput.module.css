@@ -1,0 +1,211 @@
+.chatInputContainer {
+  padding: 24px;
+  background: rgba(26, 27, 62, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.inputWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 28px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+  backdrop-filter: blur(20px);
+}
+
+.inputBox:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  background: var(--surface-light);
+  transform: translateY(-2px);
+}
+
+.inputIcon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.inputBox:focus-within .inputIcon {
+  opacity: 1;
+}
+
+.textInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  resize: none;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  font-family: inherit;
+  min-height: 24px;
+  max-height: 150px;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.textInput::placeholder {
+  color: var(--text-muted);
+}
+
+.textInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sendButton {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sendButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #00d4aa 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+
+.sendButton:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: var(--shadow);
+}
+
+.sendButton.active {
+  background: transparent;
+  color: white;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+}
+
+.sendButton.active::before {
+  opacity: 1;
+}
+
+.sendButton.active:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.5);
+}
+
+.sendButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.sendIcon {
+  transition: transform 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.sendButton.active .sendIcon {
+  transform: translateX(2px);
+}
+
+.loadingSpinner {
+  position: relative;
+  z-index: 1;
+}
+
+.inputFooter {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.hintIcon {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Custom scrollbar for textarea */
+.textInput::-webkit-scrollbar {
+  width: 4px;
+}
+
+.textInput::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textInput::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 2px;
+}
+
+.textInput::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+@media (max-width: 768px) {
+  .chatInputContainer {
+    padding: 16px 20px;
+  }
+  
+  .inputBox {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  
+  .textInput {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .sendButton {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .hint {
+    font-size: 12px;
+  }
+  
+  .hint span:last-child {
+    display: none;
+  }
+}
