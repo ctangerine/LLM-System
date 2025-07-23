@@ -3,6 +3,27 @@ import { ChatRequest, ChatResponse } from '@/types/chat';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export class ChatService {
+  static async getRooms(): Promise<string[]> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching chat rooms:', error);
+      throw new Error('Failed to fetch chat rooms.');
+    }
+  }
+
   static async sendMessage(request: ChatRequest): Promise<ChatResponse> {
     try {
       const response = await fetch(`${API_BASE_URL}/api/chat`, {
