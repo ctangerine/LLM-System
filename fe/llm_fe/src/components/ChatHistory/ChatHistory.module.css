@@ -92,6 +92,73 @@
   backdrop-filter: blur(20px);
 }
 
+.streamingMessage {
+  background: var(--surface);
+  padding: 20px 24px;
+  border-radius: 20px;
+  border-top-left-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.processingState {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.processingText {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 14px;
+}
+
+.tokenStream {
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  display: flex;
+  align-items: baseline;
+}
+
+.cursor {
+  color: var(--accent);
+  font-weight: bold;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+.errorMessage {
+  background: rgba(239, 68, 68, 0.1);
+  padding: 20px 24px;
+  border-radius: 20px;
+  border-top-left-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
 .typingIndicator {
   display: flex;
   gap: 6px;

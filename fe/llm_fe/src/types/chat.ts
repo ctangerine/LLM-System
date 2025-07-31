@@ -3,6 +3,8 @@ export interface Message {
   content: string;
   role: 'user' | 'assistant';
   timestamp: Date;
+  isStreaming?: boolean;
+  isComplete?: boolean;
 }
 
 export interface ChatResponse {
@@ -12,5 +14,11 @@ export interface ChatResponse {
 
 export interface ChatRequest {
   message: string;
-  conversation_id?: string;
+  conversation?: string;
+}
+
+export interface StreamingState {
+  isProcessing: boolean;
+  currentToken: string;
+  error?: string;
 }
