@@ -1,6 +1,7 @@
 import React from 'react';
 import { Message as MessageType } from '@/types/chat';
 import styles from './Message.module.css';
+import ReactMarkdown from 'react-markdown';
 
 interface MessageProps {
   message: MessageType;
@@ -20,7 +21,9 @@ export const Message: React.FC<MessageProps> = ({ message }) => {
       </div>
       <div className={styles.messageContent}>
         <div className={styles.messageText}>
-          {message.content}
+          <ReactMarkdown>
+            {message.content}
+          </ReactMarkdown>
         </div>
         <div className={styles.messageTime}>
           {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}

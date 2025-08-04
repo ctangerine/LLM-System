@@ -22,3 +22,4 @@ export interface StreamingState {
   currentToken: string;
   error?: string;
 }
+
