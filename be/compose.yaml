@@ -22,7 +22,7 @@ services:
     depends_on:
       redis:
         condition: service_healthy
-    command: ["python", "fastapi/fastapi_main.py"]
+    command: ["python", "llm/fastapi/fastapi_main.py"]
     volumes:
       - .:/app
     restart: unless-stopped
@@ -55,7 +55,7 @@ services:
     depends_on:
       redis:
         condition: service_healthy
-    command: ["celery", "-A", "celery_worker.celery_app", "worker", "--loglevel=info", "--pool=solo"]
+    command: ["celery", "-A", "llm.fastapi.celery_app", "worker", "--loglevel=info", "--pool=solo"]
     volumes:
       - .:/app
     restart: unless-stopped
