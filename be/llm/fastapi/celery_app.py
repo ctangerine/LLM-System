@@ -13,7 +13,7 @@ celery_app = Celery(
     'chatbot_worker',
     broker=settings.CELERY_BROKER_URL,
     backend=settings.CELERY_BROKER_URL,
-    include=['llm.fastapi.task'] 
+    include=['celery_worker.task'] 
 )
 
 # Windows-specific configuration

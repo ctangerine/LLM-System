@@ -7,7 +7,7 @@ import json
 import time
 import traceback
     
-sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 from core.config import settings 
 
 redis_client = redis.Redis.from_url(settings.REDIS_URL, decode_responses=True)
